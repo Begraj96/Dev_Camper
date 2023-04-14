@@ -1,0 +1,24 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+
+<div class="post bg-white p-1 my-1" *ngFor="let comment of comments">
+  <div>
+    <a routerLink="/profile/{{ comment.id }}">
+      <img class="round-img" src="{{ comment.avatar }}" alt="" />
+      <h4>{{ comment.name }}</h4>
+    </a>
+  </div>
+  <div>
+    <p class="my-1">
+      {{ comment.text }}
+    </p>
+    <p class="post-date">Posted on {{ comment.date }}</p>
+    <button
+      *ngIf="user === comment.user"
+      type="button"
+      class="btn btn-danger"
+      (click)="onDelete(comment._id)"
+    >
+      <i class="fa fa-times">Delete</i>
+    </button>
+  </div>
+</div>

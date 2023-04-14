@@ -1,0 +1,20 @@
+<section class="container">
+  <h1 class="large text-primary">Developers</h1>
+  <p class="lead">
+    <i class="fa fa-connectdevelop"></i> Browse and connect with developers
+  </p>
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  <div class="profiles" *ngFor="let profile of profiles">
+    <div class="profile bg-light">
+      <img class="round-img" src="../../../assets/image_1.jpg" alt="" />
+      <div>
+        <h2>{{ profile.name }}</h2>
+        <p>Developer at {{ profile.company }}</p>
+        <p>{{ profile.location }}</p>
+        <a routerLink="/profile/{{ profile.handle }}" class="btn btn-primary">View Profile</a>
+      </div>
+
+      <app-skill [skills]="profile.skills"></app-skill>
+    </div>
+  </div>
+</section>

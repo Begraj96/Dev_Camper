@@ -1,0 +1,49 @@
+<div class="post bg-white p-1 my-1">
+    <div>
+      <a routerLink="/profile/{{ post._id }}">
+        <img class="round-img" src="{{ post.avatar }}" alt="" />
+        <h4>{{ post.name }}</h4>
+        
+      </a>
+    </div>
+    <div>
+      <p class="my-1">
+        {{ post.text }}
+      </p>
+      <p class="post-date">Posted on {{ post.date | date: "short" }}</p>
+  
+      <button
+        type="button"
+        class="btn likebtn"
+        (click)="onLike(post._id)"
+        [disabled]="postLiked"
+      >
+      <i class="fa fa-thumbs-up"></i>
+        <span>{{ post.likes.length ? post.likes.length : 0 }}</span>
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-light likebtn"
+        (click)="onDislike(post._id)"
+        [disabled]="!postLiked"
+      >
+      <i class="fa fa-thumbs-down"></i>
+      </button>
+      
+      <a routerLink="/posts/{{ post._id }}" class="btn btn-primary">
+        Discussion
+        <span class="comment-count">{{
+          post.comments.length ? post.comments.length : 0
+        }}</span>
+      </a>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="onDelete(post._id)"
+        *ngIf="userId === post.user"
+      >
+        <i class="fa fa-times">Delete</i>
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,50 @@
+<section class="container">
+  <h1 class="large text-primary">Add An Experience</h1>
+  <p class="lead">
+    <i class="fa fa-code-branch"></i> Add any developer/programming positions
+    that you have had in the past
+  </p>
+  <small>* Required field</small>
+  <form class="form" (ngSubmit)="onSubmit(educationForm)" #educationForm="ngForm">
+    <div class="form-group">
+      <input type="text" #title="ngModel" placeholder="* Job Title" name="title" [(ngModel)]="experience.title" required
+        ngModel />
+
+      <span class="form-text text-danger" *ngIf="title.errors?.['required'] && (title.dirty || title.touched)">
+        Title is Required.
+      </span>
+    </div>
+
+    <div class="form-group">
+      <input type="text" #company="ngModel" placeholder="* Company" name="company" [(ngModel)]="experience.company"
+        required ngModel />
+
+      <span class="form-text text-danger" *ngIf="company.errors?.['required'] && (company.dirty || company.touched)">
+        Company is Required.
+      </span>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Location" name="location" [(ngModel)]="experience.location" ngModel />
+    </div>
+    <div class="form-group">
+      <h4>From Date</h4>
+      <input type="date" name="from" [(ngModel)]="experience.from" ngModel />
+    </div>
+    <div class="form-group">
+      <p>
+        <input type="checkbox" name="current" value="" [(ngModel)]="experience.current" ngModel />
+        Current Job
+      </p>
+    </div>
+    <div class="form-group">
+      <h4>To Date</h4>
+      <input [disabled]="experience.current" type="date" name="to" [(ngModel)]="experience.to" ngModel />
+    </div>
+    <div class="form-group">
+      <textarea name="description" cols="30" rows="5" placeholder="Job Description" [(ngModel)]="experience.description"
+        ngModel></textarea>
+    </div>
+    <input type="submit" [disabled]="educationForm.invalid" class="btn btn-primary my-1" />
+    <a class="btn btn-light my-1" routerLink="/dashboard">Go Back</a>
+  </form>
+</section>

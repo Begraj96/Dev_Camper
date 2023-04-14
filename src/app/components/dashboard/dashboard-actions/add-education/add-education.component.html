@@ -1,0 +1,50 @@
+<section class="container">
+  <h1 class="large text-primary">Add Your Education</h1>
+  <p class="lead">
+    <i class="fa fa-graduation-cap"></i> Add any school, bootcamp, etc that you
+    have attended
+  </p>
+  <small>* Required field</small>
+  <form class="form" (ngSubmit)="onSubmit(educationForm)" #educationForm="ngForm">
+    <div class="form-group">
+      <input type="text" #school="ngModel" placeholder="* School or Bootcamp" name="school"
+        [(ngModel)]="education.school" required ngModel />
+
+      <span class="form-text text-danger" *ngIf="school.errors?.['required'] && (school.dirty || school.touched)">
+        School is Required.
+      </span>
+    </div>
+    <div class="form-group">
+      <input type="text" #degree="ngModel" placeholder="* Degree or Certificate" name="degree" [(ngModel)]="education.degree" required
+        ngModel />
+
+      <span class="form-text text-danger" *ngIf="degree.errors?.['required'] && (degree.dirty || degree.touched)">
+        Degree is Required.
+      </span>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Field Of Study" name="fieldofstudy" [(ngModel)]="education.fieldofstudy"
+        ngModel />
+    </div>
+    <div class="form-group">
+      <h4>From Date</h4>
+      <input type="date" name="from" ngModel required [(ngModel)]="education.fromDate" />
+    </div>
+    <div class="form-group">
+      <p>
+        <input type="checkbox" name="current" value="" ngModel [(ngModel)]="education.current" />
+        Current School or Bootcamp
+      </p>
+    </div>
+    <div class="form-group">
+      <h4>To Date</h4>
+      <input [disabled]="education.current" type="date" name="to" ngModel [(ngModel)]="education.toDate" />
+    </div>
+    <div class="form-group">
+      <textarea name="description" cols="30" rows="5" placeholder="Program Description"
+        [(ngModel)]="education.description" ngModel></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary my-1" />
+    <a class="btn btn-light my-1" routerLink="/dashboard">Go Back</a>
+  </form>
+</section>

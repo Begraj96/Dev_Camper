@@ -1,0 +1,14 @@
+
+<section class="container">
+    <h1 class="large text-primary">Posts</h1>
+    <p class="lead"><i class="fa fa-user"></i> Welcome to the community!</p>
+    <app-post-form (updatePost)="onUpdatePost($event)"></app-post-form>
+    <app-spinner *ngIf="isLoading"></app-spinner>
+  
+    <div class="posts" *ngFor="let post of loadedPost">
+      <app-post-item
+        (removePost)="onRemovePost($event)"
+        [post]="post"
+      ></app-post-item>
+    </div>
+  </section>

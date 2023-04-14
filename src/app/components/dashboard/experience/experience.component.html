@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th class="hide-sm">Title</th>
+      <th class="hide-sm">Years</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let experience of experiences">
+      <td>{{ experience.company }}</td>
+      <td class="hide-sm">{{ experience.title }}</td>
+      <td class="hide-sm">
+        {{ experience.from | date: "shortDate":"d-m-yy" }} -
+        {{ experience.current ? "now" : (experience.to | date: "shortDate") }}
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="onDelete(experience._id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

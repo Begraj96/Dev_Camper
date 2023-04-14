@@ -1,0 +1,87 @@
+<section class="container">
+  <a routerLink="/profiles" class="btn btn-light">Back To Profiles</a>
+
+  <div class="profile-grid my-1">
+    <!-- Top -->
+    <div class="profile-top bg-primary p-2 text-center">
+      <img class="rounded-circle mx-auto d-block" src="{{ profile.user.avatar }}" alt="MyPic" />
+      <h1 class="large">{{ profile.user.name }}</h1>
+      <p class="lead">Developer at {{ profile.company }}</p>
+      <p>{{ profile.location }}</p>
+      <div class="icons my-1">
+        <a href="{{ profile.website }}" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-globe fa-2x"></i>
+        </a>
+      </div>
+    </div>
+    
+
+    <!-- About -->
+    <div class="profile-about bg-light p-2">
+      <h2 class="text-primary">{{ profile.user.name }} Bio:-</h2>
+      <p>
+        {{ profile.bio }}
+      </p>
+      <div class="line"></div>
+      <h2 class="text-primary">Skill Set</h2>
+      <div class="skills" *ngFor="let skill of profile.skills">
+        <div class="p-1"><i class="fa fa-check"></i> {{ skill }}</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="profile-exp bg-white p-2">
+      <h2 class="text-primary">Experience</h2>
+      <div *ngFor="let experience of profile.experience">
+        <h3 class="text-dark">{{ experience.company }}</h3>
+        <p>
+          {{ experience.from | date: "Short" }} -
+          {{ experience.current ? "now" : experience.to }}
+        </p>
+        <p><strong>Position: </strong>{{ experience.title }}</p>
+        <p><strong>Description: </strong>{{ experience.description }}</p>
+      </div>
+      <div>
+        <!-- Education -->
+        <div class="profile-edu bg-white p-2">
+          <h2 class="text-primary">Education</h2>
+          <div *ngFor="let education of profile.education">
+            <h3>{{ education.school }}</h3>
+            <p>
+              {{ education.fromDate }} -
+              {{ education.current ? "now" : education.toDate }}
+            </p>
+            <p><strong>Degree: </strong>{{ education.degree }}</p>
+            <p><strong>Field Of Study: </strong>{{ education.feildOfStudy }}</p>
+            <p><strong>Description: </strong>{{ education.description }}</p>
+          </div>
+        </div>
+
+        <!-- Github -->
+        <div class="profile-github">
+          <h2 class="text-primary my-1">
+            <i class="fa fa-github"></i> Github Repos
+          </h2>
+          <div class="repo bg-white p-1 my-1">
+            <div>
+              <h4>
+                <a href="#" target="_blank" rel="noopener noreferrer">Repo One</a>
+              </h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellat, laborum!
+              </p>
+            </div>
+            <div>
+              <ul>
+                <li class="badge badge-primary">Stars: 44</li>
+                <li class="badge badge-dark">Watchers: 21</li>
+                <li class="badge badge-light">Forks: 25</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

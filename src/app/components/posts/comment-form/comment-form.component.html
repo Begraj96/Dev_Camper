@@ -1,0 +1,8 @@
+<div class="bg-primary p">
+    <h3>Leave A Comment</h3>
+</div>
+<form class="form my-1" (ngSubmit)="onSubmit(commentForm)" #commentForm="ngForm">
+    <textarea name="text" cols="30" rows="5" placeholder="Comment on this post" [(ngModel)]="text" ngModel
+        required></textarea>
+    <input [disabled]="!commentForm.valid" type="submit" class="btn btn-dark my-1" value="Submit" />
+</form>

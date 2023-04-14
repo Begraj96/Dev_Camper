@@ -1,0 +1,23 @@
+<div class="post-form">
+    <div class="bg-primary p">
+      <h3>Say Something...</h3>
+    </div>
+    <form class="form my-1" (ngSubmit)="onSubmit(postForm)" #postForm="ngForm">
+      <textarea
+        name="text"
+        cols="30"
+        rows="5"
+        placeholder="Create a post"
+        [(ngModel)]="text"
+        ngModel
+        required
+      ></textarea>
+  
+      <input
+        [disabled]="text === ''"
+        type="submit"
+        class="btn btn-dark my-1"
+        value="Submit"
+      />
+    </form>
+  </div>
